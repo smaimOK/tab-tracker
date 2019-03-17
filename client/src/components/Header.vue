@@ -7,7 +7,9 @@
     </v-toolbar-title>
 
     <v-toolbar-items>
-      <v-btn flat dark>
+      <v-btn
+        flat
+        v-on:click="navigateTo({name: 'songs'})">
         browse
       </v-btn>
     </v-toolbar-items>
@@ -27,6 +29,13 @@
         v-on:click="navigateTo({name: 'register'})">
           sign up
       </v-btn>
+
+        <v-btn
+        v-if="$store.state.isUserLoggedIn"
+        flat
+        v-on:click="logout">
+          log out
+      </v-btn>
     </v-toolbar-items>
   </v-toolbar>
 </template>
@@ -36,6 +45,14 @@ export default {
   methods: {
     navigateTo (route) {
       this.$router.push(route)
+    },
+    logout () {
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+      // TODO: redirect to home page
+      this.$router.push({
+        name: 'root'
+      })
     }
   }
 }

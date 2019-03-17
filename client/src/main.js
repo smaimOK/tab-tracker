@@ -3,12 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+
 import Vuetify from 'vuetify'
 import { sync } from 'vuex-router-sync'
+import 'material-design-icons-iconfont'
 import 'vuetify/dist/vuetify.min.css'
 import store from '@/store/store'
-
-console.log(store)
 
 Vue.config.productionTip = false
 
